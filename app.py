@@ -3,11 +3,11 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 
 app = Flask(__name__)
-model = pickle.load(open('model.pkl', 'rb'))
+model = pickle.load(open('model2.pkl', 'rb'))
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index2.html')
 
 @app.route('/predict',methods=['POST'])
 def predict():
@@ -17,10 +17,15 @@ def predict():
     int_features = [int(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
+    output = prediction[0]
+    
+    if(format(output)==1):
+        return render_template('index2.html', prediction_text='The ad was clicked by user')
+    else:
+        return render_template('index2.html', prediction_text='The ad was not clicked by user')
+        
 
-    output = round(prediction[0], 2)
 
-    return render_template('index.html', prediction_text='Employee Salary should be $ {}'.format(output))
 
 @app.route('/predict_api',methods=['POST'])
 def predict_api():

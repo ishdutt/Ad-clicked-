@@ -14,13 +14,15 @@
 
 <body>
  <div class="login">
-	<h1>Predict Salary Analysis</h1>
+	<h1>Ad Clicked ?</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="experience" placeholder="Experience" required="required" />
-        <input type="text" name="test_score" placeholder="Test Score" required="required" />
-		<input type="text" name="interview_score" placeholder="Interview Score" required="required" />
+    	  <input type="text" name="Daily_Time_Spent_on_Site" placeholder="Daily Time Spent on Site" required="required" />
+        <input type="text" name="Age" placeholder="Age" required="required" />
+		    <input type="text" name="Area_Income" placeholder="Area Income" required="required" />
+		    <input type="text" name="Daily_Internet_Usage" placeholder="Daily Internet Usage" required="required" />
+		    <input type="text" name="Male" placeholder="Gender" required="required" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
